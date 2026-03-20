@@ -183,19 +183,19 @@ const logoutUser =asyncHandler(async (req, res) => {
 })  
 
 const refreshAccessToken = asyncHandler(async (req, res) => {
-    const {refreshToken} = req.cookies
-    if(!refreshToken){
+    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
+    if(!incomingRefreshToken){
         throw new ApiError(401, "Refresh token is missing")
     }
     let userId;
     try {
-        const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET)
+        const decoded = jwt.verify(incomingRefreshToken, process.env.REFRESH_TOKEN_SECRET)
         userId = decoded._id
     } catch (error) {
         throw new ApiError(401, "Invalid refresh token")
     }
     const user = await User.findById(userId)
-    if(!user || user.refreshToken !== refreshToken){
+    if(!user || user.refreshToken !== incomingRefreshToken){
         throw new ApiError(401, "Invalid refresh token")
     }
     const accessToken = user.genrateAccessToken()
