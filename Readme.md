@@ -40,23 +40,46 @@ A production-grade backend built while following the [Chai Aur Code](https://www
 
 ```
 src/
-├── controllers/       # Route handlers
-│   └── user.controller.js
-├── db/                # Database connection
-├── middlewares/       # Custom middleware
+├── controllers/           # Route handlers
+│   ├── comment.controller.js
+│   ├── dashboard.controller.js
+│   ├── healthcheck.controller.js
+│   ├── like.controller.js
+│   ├── playlist.controller.js
+│   ├── subscription.controller.js
+│   ├── tweet.controller.js
+│   ├── user.controller.js
+│   └── video.controller.js
+├── db/                    # Database connection
+│   └── index.js
+├── middlewares/           # Custom middleware
 │   ├── auth.middleware.js
 │   └── multer.middleware.js
-├── models/            # Mongoose schemas
+├── models/                # Mongoose schemas
+│   ├── comment.model.js
+│   ├── like.model.js
+│   ├── playlist.model.js
+│   ├── subscription.model.js
+│   ├── tweet.model.js
 │   ├── user.model.js
 │   └── video.model.js
-├── routes/            # Express routers
-│   └── user.routes.js
-├── utils/             # Utility classes
+├── routes/                # Express routers
+│   ├── comment.routes.js
+│   ├── dashboard.routes.js
+│   ├── healthcheck.routes.js
+│   ├── like.routes.js
+│   ├── playlist.routes.js
+│   ├── subscription.routes.js
+│   ├── tweet.routes.js
+│   ├── user.routes.js
+│   └── video.routes.js
+├── utils/                 # Utility classes
 │   ├── ApiError.js
 │   ├── ApiResponse.js
 │   ├── asyncHandler.js
 │   └── cloudinary.js
 ├── app.js
+├── constants.js
 └── index.js
 ```
 
